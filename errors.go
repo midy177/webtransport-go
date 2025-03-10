@@ -77,4 +77,6 @@ type SessionError struct {
 
 var _ error = &SessionError{}
 
-func (e *SessionError) Error() string { return e.Message }
+func (e *SessionError) Error() string {
+	return fmt.Sprintf("session canceled, remote: %v error code: %d msg: %s", e.Remote, e.ErrorCode, e.Message)
+}
