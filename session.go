@@ -115,7 +115,7 @@ func (s *Session) handleConn() {
 	var closeErr *SessionError
 	err := s.parseNextCapsule()
 	if !errors.As(err, &closeErr) {
-		closeErr = &SessionError{Remote: true}
+		closeErr.Remote = true
 	}
 
 	s.closeMx.Lock()
